@@ -1,4 +1,17 @@
+from enum import Enum
+
 import aiohttp
+
+class PaymentStatus(str, Enum):
+    RECEIVED = "received"
+    CANCELLED = "cancelled"
+    ADDED = "added"
+    NEWREQUEST = "newRequest"
+    FAILED = "failed"
+    AUTHORIZED = "authorized"
+    PARTIALLYRECEIVED = "partiallyReceived"
+    VOIDED = "voided"
+    PENDING = "pending"
 
 class PayByLinkAsync:
 
@@ -65,8 +78,8 @@ class PayByLinkAsync:
         """Endpoint to get a transaction
 
         Args:
-            divisionid (str): _description_
-            transactionid (str): _description_
+            divisionid (str): Division UUID
+            transactionid (str): Transaction UUID
 
         Returns:
             dict: Details of the transaction requested
